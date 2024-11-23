@@ -10,17 +10,19 @@ on:
       - main
       - testing
 
+permissions:
+  contents: write
+  security-events: write
+
 jobs:
   build:
 
     runs-on: ubuntu-latest
 
     steps:
-    # Step 1: Checkout the code
     - name: Checkout code
       uses: actions/checkout@v4
 
-    # Step 2: Set up Java
     - name: Set up JDK 21
       uses: actions/setup-java@v4
       with:
@@ -28,10 +30,8 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    # Step 3: Build and resolve dependencies
     - name: Build Maven project
       run: mvn install
 
-    # Step 4: Update dependency graph (optional but useful for security insights)
     - name: Update dependency graph
       uses: advanced-security/maven-dependency-submission-action@v1
