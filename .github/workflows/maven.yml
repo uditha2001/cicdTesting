@@ -33,5 +33,4 @@ jobs:
     - name: Build Maven project
       run: mvn install
 
-    - name: Update dependency graph
-      uses: advanced-security/maven-dependency-submission-action@v1
+   
